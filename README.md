@@ -1,24 +1,17 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+自分が苦労をした点
 
-* Ruby version
+1.開発環境の構築が難しい、Ruby6.0を使うことが出来たが あまり参考になるようなブログが無く、検索に苦労しました。
+2.gitの知識があまりなかったため、検索を重ねながら解決していきました。
+3.Web開発の流れを把握していなかった
 
-* System dependencies
+学んだ点
 
-* Configuration
+1.開発環境はRails5.2.4.2の方が参考文献なども多く、扱いやすかったため、Rails6での環境は断念しました。
+2.gitにおけるプッシュ作業。ローカルリポジトリとリモートリポジトリとで競合を起こすことがあり、プッシュできないということを学びました。
+3.Web開発は 企画→設計→開発→公開 の順に行うということを意識する
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+自慢したい・相談したい点
