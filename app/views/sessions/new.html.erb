@@ -1,19 +1,24 @@
 <% provide(:title, "ログイン")%>
 <h1>ログイン画面</h1>
-<div class="d-flex justify-content-end">
-    <div class="center junbotron">
-        <form>
-          <div class="form-group">
-            <label for="exampleInputEmail1">メールアドレス</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="メールアドレス">
-            <small id="emailHelp" class="form-text text-muted">あなたのメールアドレスを不正悪用したりしません</small>
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPassword1">パスワード</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="パスワード">
-          </div>
-          <button type="submit" class="btn btn-primary">ログイン</button>
-        </form>
+<div class="row justify-content-around">
+  <div class="col-5">
+    <%= link_to image_tag("instagram.jpg", alt: "Instagram picture"), "assets/instagram" %>
+  </div>
+  <div class="col-5 align-self-center">
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">メールアドレス</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="メールアドレス">
+        <small id="emailHelp" class="form-text text-muted">あなたのメールアドレスを不正悪用したりしません</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">パスワード</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="パスワード">
+      </div>
+      <div class="center">
+        <button type="submit" class="btn btn-primary">ログイン</button>
         <p>アカウントをお持ちではないですか？<%= link_to "登録する", "#", class: "btn btn-primary"%></p>
-    </div>
+      </div>
+    </form>
+  </div>
 </div>
