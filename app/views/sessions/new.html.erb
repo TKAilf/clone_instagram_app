@@ -1,4 +1,19 @@
-<% provide(:title, "新規登録")%>
-<h1>Clone_Instagram_App Login</h1>
-<p>ログインしてください</p>
-<p>アカウントをお持ちではないですか？<%= link_to "登録する", "#"%></p>
+<% provide(:title, "ログイン")%>
+<h1>ログイン画面</h1>
+<div class="d-flex justify-content-end">
+    <div class="center junbotron">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1">メールアドレス</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="メールアドレス">
+            <small id="emailHelp" class="form-text text-muted">あなたのメールアドレスを不正悪用したりしません</small>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">パスワード</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="パスワード">
+          </div>
+          <button type="submit" class="btn btn-primary">ログイン</button>
+        </form>
+        <p>アカウントをお持ちではないですか？<%= link_to "登録する", "#", class: "btn btn-primary"%></p>
+    </div>
+</div>
