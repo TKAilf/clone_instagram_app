@@ -1,2 +1,16 @@
-<% provide(:title, "マイプロフィール") %>
+<% provide(:title, @user.name) %>
 <%= render 'layouts/header' %>
+<div class="pt-5 d-flex justify-content-start">
+  <div class="row">
+    <div class="col-md-4">
+        <h1>
+          <%= gravatar_for @user %>
+        </h1>
+    </div>
+    <div class="pl-3 align-self-center">
+        <h2>
+          <%= @user.name %>
+        </h2>
+    </div>
+  </div>
+</div>
