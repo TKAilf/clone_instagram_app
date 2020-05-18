@@ -2,28 +2,31 @@
 <h1>新規登録画面</h1>
 <div class="row justify-content-center">
   <div class="p-5 col-md-5">
-    <form>
+    <%= form_with model: @user do |f| %>
+    <%= render 'shared/error_messages' %>
       <div class="mb-3 form-group">
-        <label for="exampleInputEmail1">メールアドレス</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="メールアドレス">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.text_field :email, class: "form-control", id: "email", type: "email", aria: { describedby: "emailHelp"}, placeholder: "メールアドレス" %>
       </div>
       <div class="mb-3 form-group">
-        <label for="exampleInputEmail1">ユーザーの名前</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="メールアドレス">
+        <%= f.label :name, "ユーザーの名前" %>
+        <%= f.text_field :name, class: "form-control", id: "name", aria: { describedby: "emailHelp"}, placeholder: "ユーザーの名前" %>
       </div>
       <div class="mb-3 form-group">
-        <label for="exampleInputPassword1">パスワード</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="パスワード">
+        <%= f.label :password, "パスワード" %>
+        <%= f.text_field :password, class: "form-control", id: "password", type: "password", placeholder: "パスワード" %>
       </div>
       <div class="mb-3 form-group">
-        <label for="exampleInputPassword1">パスワードの確認</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="パスワードの確認">
+        <%= f.label :password, "パスワードの確認" %>
+        <%= f.text_field :password_confirmation, class: "form-control", id: "password_confirmation", type: "password", placeholder: "パスワードの確認" %>
       </div>
       <small id="emailHelp" class="mb-3 form-text text-muted">確認のために再度同じパスワードを入力してください。</small>
       <div class="center">
-        <button type="submit" class="mb-3 btn btn-primary">新規登録</button>
-        <p>アカウントをお持ちですか？<%= link_to "ログインする", login_path, class: "btn btn-primary"%></p>
+        <%= f.submit "新規登録", class: "mb-3 btn btn-primary" %>
       </div>
-    </form>
+    <% end %>
+      <div class="center">
+        <p>アカウントをお持ちですか？<%= link_to "ログインする", login_path, class: "m-1 btn btn-primary"%></p>
+      </div>
   </div>
 </div>
