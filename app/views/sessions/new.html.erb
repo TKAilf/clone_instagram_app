@@ -7,19 +7,19 @@
     </div>
   </div>
   <div class="my-auto col-md-5 align-self-stretch">
-    <%= form_with model: @user do |f| %>
+    <%= form_with model: @user, local: true do |f| %>
       <div class="my-4 form-group">
         <%= f.label :email, "メールアドレス" %>
-        <%= f.text_field :email, class: "form-control", id: "email", aria: { describedby: "emailHelp"}, placeholder: "メールアドレス" %>
+        <%= f.text_field :email, class: "form-control", id: "email", type: "email", aria: { describedby: "emailHelp"}, placeholder: "メールアドレス" %>
         <small id="emailHelp" class="form-text text-muted">あなたのメールアドレスを不正悪用したりしません</small>
       </div>
       <div class="mb-4 form-group">
         <%= f.label :password, "パスワード" %>
-        <%= f.text_field :password, class: "form-control", id: "password", placeholder: "パスワード" %>
+        <%= f.text_field :password, class: "form-control", id: "password", type: "password", placeholder: "パスワード" %>
       </div>
       <div class="center">
-        <button type="submit" class="mb-4 btn btn-primary">ログイン</button>
-        <p>アカウントをお持ちではないですか？<%= link_to "登録する", new_user_path, class: "m-1 btn btn-primary"%></p>
+        <%= f.submit "ログイン", class: "mb-4 btn btn-primary" %>
+        <p>アカウントをお持ちではないですか？<%= link_to "登録する", signup_path, class: "m-1 btn btn-primary"%></p>
       </div>
     <% end %>
   </div>
