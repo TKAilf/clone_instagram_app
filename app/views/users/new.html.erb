@@ -2,15 +2,15 @@
 <h1>新規登録画面</h1>
 <div class="row justify-content-center">
   <div class="p-5 col-md-5">
-    <%= form_with model: @user do |f| %>
-    <%= render 'shared/error_messages' %>
-      <div class="mb-3 form-group">
-        <%= f.label :email, "メールアドレス" %>
-        <%= f.text_field :email, class: "form-control", id: "email", type: "email", aria: { describedby: "emailHelp"}, placeholder: "メールアドレス" %>
-      </div>
+    <%= form_with model: @user, local: true do |f| %>
+      <%= render 'shared/error_messages' %>
       <div class="mb-3 form-group">
         <%= f.label :name, "ユーザーの名前" %>
         <%= f.text_field :name, class: "form-control", id: "name", aria: { describedby: "emailHelp"}, placeholder: "ユーザーの名前" %>
+      </div>
+      <div class="mb-3 form-group">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.text_field :email, class: "form-control", id: "email", type: "email", aria: { describedby: "emailHelp"}, placeholder: "メールアドレス" %>
       </div>
       <div class="mb-3 form-group">
         <%= f.label :password, "パスワード" %>
@@ -25,8 +25,8 @@
         <%= f.submit "新規登録", class: "mb-3 btn btn-primary" %>
       </div>
     <% end %>
-      <div class="center">
-        <p>アカウントをお持ちですか？<%= link_to "ログインする", login_path, class: "m-1 btn btn-primary"%></p>
-      </div>
+    <div class="center">
+      <p>アカウントをお持ちですか？<%= link_to "ログインする", login_path, class: "m-1 btn btn-primary"%></p>
+    </div>
   </div>
 </div>
