@@ -11,6 +11,7 @@
 6.form_withタグは他のformタグとは違い、デフォルトでremote: trueになっていると言うことに気づくのに時間がかかりました。
 7.flashとflash.nowの違い
 8.content_tagの仕組み
+9.testにおいてヘルパーメソッドを使えないということへの理解。
 
 学んだ点
 
@@ -22,6 +23,7 @@
 6.form_withを使用する際の注意点。form_tag=>form_withのときはurl: ""で明示的にurlを指定する。form_for=>form_withのときはmodel: ""で明示的にモデルのインスタンス変数を指定する。
 7.flashは次の次のアクションまで表示させる。flash.nowは次のアクションまで表示させる。という違いがあります。また、redirect_toは1回のアクションとなりますがrenderはアクションではないと判断されます。
 8.content_tagヘルパーとは、railsでHTML表示をさせるための1つの手段。 content_tag(:div,"content",class: ["link","saiko"])=><div class="link saiko">content</div>
+9.testにおいてヘルパーメソッドを定義する場所がある以上、通常のヘルパーメソッドを呼び出すことは将来的にバグの発生やメンテナンスの無駄な負荷になり得るので 切り分けて考える。
 
 自慢したい・相談したい点
 1.Rails Tutorialでは行っていなかったform_withでのフォーム実装
