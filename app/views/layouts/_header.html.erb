@@ -20,7 +20,7 @@
           <%= link_to "設定", '#', class: "nav-link dropdown-toggle",id: "navbarDropdown", role: "button", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a><%= link_to "マイプロフィール編集", "#", class: "dropdown-item" %></a>
+          <a><%= link_to "マイプロフィール編集", edit_user_path(current_user), class: "dropdown-item" %></a>
           <a><%= link_to "パスワードの変更", '#', class: "dropdown-item" %></a>
           <a><%= link_to "利用規約", "https://help.instagram.com/581066165581870", class: "dropdown-item" %></a>
           <div class="dropdown-divider"></div>
