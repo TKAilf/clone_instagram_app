@@ -12,6 +12,7 @@
 7.flashとflash.nowの違い
 8.content_tagの仕組み
 9.testにおいてヘルパーメソッドを使えないということへの理解。
+10.form_withを用いてログインをしようとするとプレフィックス(:session)の無い値を渡してしまいエラーが起こってしまった。
 
 学んだ点
 
@@ -24,6 +25,7 @@
 7.flashは次の次のアクションまで表示させる。flash.nowは次のアクションまで表示させる。という違いがあります。また、redirect_toは1回のアクションとなりますがrenderはアクションではないと判断されます。
 8.content_tagヘルパーとは、railsでHTML表示をさせるための1つの手段。 content_tag(:div,"content",class: ["link","saiko"])=><div class="link saiko">content</div>
 9.testにおいてヘルパーメソッドを定義する場所がある以上、通常のヘルパーメソッドを呼び出すことは将来的にバグの発生やメンテナンスの無駄な負荷になり得るので 切り分けて考える。
+10.form_withを用いてプレフィックスの違うものを使いログインする際には scope: :sessionのようにスコープを明示的に与えることで通過させることができる。
 
 自慢したい・相談したい点
 1.Rails Tutorialでは行っていなかったform_withでのフォーム実装

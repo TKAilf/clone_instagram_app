@@ -7,10 +7,10 @@
     </div>
   </div>
   <div class="my-auto col-md-5 align-self-stretch">
-    <%= form_with model: @user, local: true do |f| %>
+    <%= form_with scope: :session, url: login_path, local: true do |f| %>
       <div class="my-4 form-group">
         <%= f.label :email, "メールアドレス" %>
-        <%= f.text_field :email, class: "form-control", id: "email", type: "email", aria: { describedby: "emailHelp"}, placeholder: "メールアドレス" %>
+        <%= f.email_field :email, class: "form-control", id: "email", type: "email", aria: { describedby: "emailHelp"}, placeholder: "メールアドレス" %>
         <small id="emailHelp" class="form-text text-muted">あなたのメールアドレスを不正悪用したりしません</small>
       </div>
       <div class="mb-4 form-group">
