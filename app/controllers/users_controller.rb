@@ -10,9 +10,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user
-      flash[:success] = "インスタグラムのクローンアプリへようこそ!!"
-      redirect_to @user
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "アカウント有効化用のメールを送信しました。確認してください。"
+      redirect_to static_pages_home_path
     else
       render 'new'
     end

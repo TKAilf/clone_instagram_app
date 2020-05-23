@@ -1,0 +1,9 @@
+<h1>インスタグラムクローンアプリ</h1>
+
+<p><%= @user.name%>さん、こんにちは！</p>
+
+<p>インスタグラムクローンアプリへ来ていただいたことを嬉しくお思います！</p>
+
+<p>まず初めに、下記URLを押していただきアカウントを有効化させる必要があります。</p>
+
+<%= edit_account_activation_url(@user.activation_token,email: @user.email) %>
