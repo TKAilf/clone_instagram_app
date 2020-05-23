@@ -51,5 +51,15 @@ class User < ApplicationRecord
     self.activation_token = User.new_token
     self.activation_digest = User.digest(activation_token)
   end
+  
+  # アカウントを有効化する
+  def activate
+    update_columns(activated: true, activated_at: Time.zone.now)
+  end
+  
+  # 有効化用のメールを送信する
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
 
 end
