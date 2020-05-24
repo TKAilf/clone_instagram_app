@@ -1,9 +1,10 @@
-<h1>インスタグラムクローンアプリ</h1>
+<h1>Instagram_Clone_App</h1>
 
-<p><%= @user.name%>さん、こんにちは！</p>
+<p>Hi <%= @user.name %>,</p>
 
-<p>インスタグラムクローンアプリへ来ていただいたことを嬉しくお思います！</p>
+<p>
+Welcome to the Sample App! Click on the link below to activate your account:
+</p>
 
-<p>まず初めに、下記URLを押していただきアカウントを有効化させる必要があります。</p>
-
-<%= edit_account_activation_url(@user.activation_token,email: @user.email) %>
+<%= link_to "Activate", edit_account_activation_url(@user.activation_token,
+                                                    email: @user.email) %>

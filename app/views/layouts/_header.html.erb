@@ -26,7 +26,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a><%= link_to "マイプロフィール編集", edit_user_path(current_user), class: "dropdown-item" %></a>
-          <a><%= link_to "パスワードの変更", '#', class: "dropdown-item" %></a>
+          <a><%= link_to "パスワードの変更", new_password_reset_path, class: "dropdown-item" %></a>
           <a><%= link_to "利用規約", "https://help.instagram.com/581066165581870", class: "dropdown-item" %></a>
           <div class="dropdown-divider"></div>
           <a><%= link_to "ログアウト", logout_path, class: "dropdown-item", method: :delete %></a>

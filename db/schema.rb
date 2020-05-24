@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_22_140531) do
+ActiveRecord::Schema.define(version: 2020_05_24_055811) do
 
 # Could not dump table "users" because of following StandardError
 #   Unknown type 'sting' for column 'activation_digest'

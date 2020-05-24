@@ -1,4 +1,5 @@
-<%= @user.name%>さん、こんにちは！
-インスタグラムクローンアプリへ来ていただいたことを嬉しくお思います!
-まず初めに、下記URLを押していただきアカウントを有効化させる必要があります。
-<%= link_to "Activate", edit_account_activation_url(@user.activation_token,email: @user.email) %>
+Hi <%= @user.name %>,
+
+Welcome to the Instagram_Clone_App! Click on the link below to activate your account:
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

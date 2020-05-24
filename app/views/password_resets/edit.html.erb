@@ -1,0 +1,25 @@
+<% provide(:title, "パスワード変更") %>
+<%= render 'layouts/header' if !current_user.nil? %>
+<h1>パスワード変更</h1>
+<div class="row justify-content-center">
+  <div class="p-5 col-md-5">
+    <%= form_with model: @user, local: true do |f| %>
+      <%= render 'shared/error_messages' %>
+      
+      <%= hidden_field_tag :email, @user.email %>
+      
+      <div class="mb-3 form-group">
+        <%= f.label :password, "パスワード" %>
+        <%= f.text_field :password, class: "form-control", id: "password", type: "password", placeholder: "パスワード" %>
+      </div>
+      <div class="mb-3 form-group">
+        <%= f.label :password, "パスワードの確認" %>
+        <%= f.text_field :password_confirmation, class: "form-control", id: "password_confirmation", type: "password", placeholder: "パスワードの確認" %>
+      </div>
+      <small id="emailHelp" class="mb-3 form-text text-muted">確認のために再度同じパスワードを入力してください。</small>
+      <div class="center">
+        <%= f.submit "パスワードの変更を完了する", class: "mb-3 btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

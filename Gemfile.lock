@@ -106,6 +106,8 @@ GEM
     lumberjack (1.2.4)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
+    mail-iso-2022-jp (2.0.9)
+      mail (>= 2.2.6, <= 2.7.1)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
@@ -237,6 +239,7 @@ DEPENDENCIES
   jbuilder (= 2.7.0)
   jquery-rails (= 4.3.1)
   listen (= 3.1.5)
+  mail-iso-2022-jp
   minitest (= 5.10.3)
   minitest-reporters (= 1.1.14)
   pg (= 0.20.0)
