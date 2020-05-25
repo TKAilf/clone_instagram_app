@@ -13,6 +13,9 @@ gem 'bcrypt',       '>= 3.1.13'
 gem 'faker'
 gem 'will_paginate', '~> 3.1.0'
 gem 'bootstrap-will_paginate', '1.0.0'
+gem 'carrierwave', '~> 2.0'
+gem 'mini_magick', '~> 4.10'
+gem 'streamio-ffmpeg'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13' , require: true
@@ -36,4 +39,5 @@ end
 
 group :production do
   gem 'pg', '0.20.0', require: false
+  gem 'fog', '~> 2.2'
 end

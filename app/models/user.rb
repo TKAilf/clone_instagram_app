@@ -10,6 +10,7 @@ class User < ApplicationRecord
   uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  has_many :microposts, dependent: :destroy
   
   #渡されたstring引数に対してハッシュを返す
   def User.digest(string)
@@ -76,6 +77,12 @@ class User < ApplicationRecord
   # パスワードリセット用リンクの有効期限時間が切れている場合はtrueを返す
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+  
+  # 試作feedの定義
+  # 完全な実装は次章の「ユーザーをフォローする」を参照
+  def feed
+    Micropost.where("user_id = ?", id)
   end
 
 end

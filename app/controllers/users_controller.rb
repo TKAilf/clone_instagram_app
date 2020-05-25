@@ -28,6 +28,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
     redirect_to static_pages_home_path and return unless @user.activated?
   end
   
@@ -55,15 +56,6 @@ class UsersController < ApplicationController
     end
     
     #beforeアクション
-    
-    #ログイン済みのユーザーか確認する
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "ログインしてください"
-        redirect_to login_path
-      end
-    end
     
     #ログイン済みであっても、正しいユーザーであるかの確認
     def correct_user
