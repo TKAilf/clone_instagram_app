@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   
   attr_accessor :remember_token, :activation_token, :reset_token
-  before_save :downcase_email
+  before_save :downcase_email, unless: :uid?
   before_create :create_activation_digest
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -108,6 +108,31 @@ class User < ApplicationRecord
   # 現在のユーザーがフォローしてたらtrueを返す
   def following?(other_user)
     following.include?(other_user)
+  end
+  
+  # oauth-facebookで取り出した情報を各ユーザー毎に検索、なければ作成する
+  def self.find_or_create_user_from_auth(auth)
+    provider = auth[:provider]
+    uid = auth[:uid]
+    name = auth[:info][:name]
+    image = auth[:info][:image]
+    email = auth[:info][:email]
+    password = SecureRandom.urlsafe_base64
+    
+    user = User.where(uid: auth.uid, provider: auth.provider).first
+    
+    unless user
+      user = User.create(
+        uid:        uid,
+        provider:   provider,
+        email:      email,
+        name:       name,
+        password:   password,
+        image_url:  image
+      )
+    end
+    
+    user
   end
 
 end

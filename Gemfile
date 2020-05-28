@@ -16,7 +16,9 @@ gem 'bootstrap-will_paginate', '1.0.0'
 gem 'carrierwave', '~> 2.0'
 gem 'mini_magick', '~> 4.10'
 gem 'streamio-ffmpeg'
+gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13' , require: true

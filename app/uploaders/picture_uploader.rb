@@ -35,7 +35,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   version :thumb, if: :is_thumb?
 
   version :thumb do
-    process resize_to_limit: [400, 400]
+    process resize_to_fill: [400, 400]
   end
   
   version :small_thumb, from_version: :thumb do

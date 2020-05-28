@@ -3,7 +3,7 @@
 <div class="row justify-content-around">
   <div class="col-md-5">
     <div class="text-center">
-      <img src="assets/instagram" class="rounded" alt="Instagram Picture">
+      <img src="assets/instagram" class="img-fluid rounded" alt="Instagram Picture">
     </div>
   </div>
   <div class="my-auto col-md-5 align-self-stretch">
@@ -22,10 +22,13 @@
         <%= f.check_box :remember_me, class: "form-check-input", id: "exampleCheck1" %>
         <%= f.label :remember_me, "次回から自動的にログインする", class: "form-ckeck-label", for: "exampleCheck1"%>
       </div>
-      <div class="center">
+      <div class="mb-4 center">
         <%= f.submit "ログイン", class: "mb-4 btn btn-primary" %>
         <p>アカウントをお持ちではないですか？<%= link_to "登録する", signup_path, class: "m-1 btn btn-primary"%></p>
       </div>
     <% end %>
+    <div class="center">
+        <%= link_to "Facebookでログインする", "/auth/facebook", class: "btn btn-primary badge-pill" %>
+    </div>
   </div>
 </div>
