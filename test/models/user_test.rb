@@ -4,7 +4,9 @@ class UserTest < ActiveSupport::TestCase
   
   def setup
     @user = User.new(name: "Example User", email: "user@example.com",
-                     password: "foobar", password_confirmation: "foobar")
+                     password: "foobar", password_confirmation: "foobar",
+                     unique_name: "example_user")
+    @micropost = microposts(:orange)
   end
   
   test "valid sample_user?" do
@@ -70,7 +72,7 @@ class UserTest < ActiveSupport::TestCase
   
   test "associated microposts should be destroyed" do
     @user.save
-    @user.microposts.create!(content: "Lorem ipsum")
+    @user.microposts.create!(content: @micropost.content, picture: File.open("./test/fixtures/instagram.jpg"))
     assert_difference 'Micropost.count', -1 do
       @user.destroy
     end

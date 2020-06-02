@@ -5,7 +5,7 @@ class MicropostTest < ActiveSupport::TestCase
   def setup
     @user = users(:michael)
     # このコードは慣習的に正しくない
-    @micropost = @user.microposts.build(content: "Lorem ipsum")
+    @micropost = @user.microposts.build(content: "Lorem ipsum",picture: File.open("./test/fixtures/instagram.jpg"))
   end
 
   test "should be valid" do

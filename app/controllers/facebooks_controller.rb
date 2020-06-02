@@ -9,7 +9,7 @@ class FacebooksController < ApplicationController
     if auth.present?
       @user = User.find_or_create_user_from_auth(auth)
       log_in(@user)
-      @user.update_attributes(activated: true, activated_at: Time.zone.now)
+      @user.update_attributes(activated: true, activated_at: Time.zone.now, unique_name: @user.uid)
       flash[:success] = "facebookアカウントでログインできました!"
       redirect_to static_pages_home_path
     else

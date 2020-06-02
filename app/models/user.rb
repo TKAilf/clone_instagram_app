@@ -1,15 +1,21 @@
 class User < ApplicationRecord
   
   attr_accessor :remember_token, :activation_token, :reset_token
+  # @一意ユーザ名の正規表現(大文字小文字を区別しない、半角英数とアンダースコアのみ)
+  before_save :downcase_unique_name
   before_save :downcase_email, unless: :uid?
   before_create :create_activation_digest
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
-                   format: { with: VALID_EMAIL_REGEX },
-  uniqueness: { case_sensitive: false }
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  VALID_UNIQUE_NAME_REGEX = /\A[a-z0-9_]+\z/i
+  validates :unique_name, presence: true, length: { maximum: 50 },
+                          format: { with: VALID_UNIQUE_NAME_REGEX },
+                          uniqueness: { case_sensitive: false }
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
@@ -90,19 +96,22 @@ class User < ApplicationRecord
   # ユーザーのステータスフィードを返す
   def feed
     following_ids = "SELECT followed_id FROM relationships
-                     WHERE follower_id = :user_id"
+                    WHERE follower_id = :user_id"
     Micropost.where("user_id IN (#{following_ids})
-                     OR user_id = :user_id", user_id: id)
+                    OR user_id = :user_id
+                    OR in_reply_to =   :user_id", user_id: id)
   end
   
   # ユーザーをフォローする
   def follow(other_user)
     following << other_user
+    Relationship.send_follow_email(self, other_user)
   end
 
   # ユーザーをフォロー解除する
   def unfollow(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
+    Relationship.send_unfollow_email(self, other_user)
   end
 
   # 現在のユーザーがフォローしてたらtrueを返す
@@ -119,20 +128,26 @@ class User < ApplicationRecord
     email = auth[:info][:email]
     password = SecureRandom.urlsafe_base64
     
-    user = User.where(uid: auth.uid, provider: auth.provider).first
+    user = self.where(uid: auth.uid, provider: auth.provider).first
     
     unless user
-      user = User.create(
+      user = self.create(
         uid:        uid,
         provider:   provider,
         email:      email,
         name:       name,
         password:   password,
-        image_url:  image
+        image_url:  image,
+        unique_name: uid
       )
     end
     
     user
+  end
+
+  # 一意ユーザ名をすべて小文字にする
+  def downcase_unique_name
+    self.unique_name.downcase!
   end
 
 end

@@ -7,15 +7,15 @@
     <%= f.submit "投稿する", class: "btn btn-primary" %>
   </div>
   <span class="picture">
-    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png,video/*' %>
+    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
   </span>
 <% end %>
 
 <script type="text/javascript">
   $('#micropost_picture').bind('change', function() {
     var size_in_megabytes = this.files[0].size/1024/1024;
-    if (size_in_megabytes > 5) {
-      alert('ファイルサイズは最大で5MBです。条件に合うファイルを選択してください。');
+    if (size_in_megabytes > 50) {
+      alert('ファイルサイズは最大で50MBです。条件に合うファイルを選択してください。');
     }
   });
 </script>

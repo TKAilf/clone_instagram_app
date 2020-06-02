@@ -1,0 +1,10 @@
+<h1>unfollow_notification</h1>
+
+<p>Hi <%= @user.name %>,</p>
+
+<p>
+<%= @follower.name %> unfollowed you...
+Click on the link below to check your followers:
+</p>
+
+<%= link_to "Check your follower", followers_user_url(@user) %>

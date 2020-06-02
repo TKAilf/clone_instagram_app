@@ -11,11 +11,12 @@ User.create!(name:  "Example User",
              password_confirmation: "foobar",
              admin: true,
              activated: true,
-             activated_at: Time.zone.now)
+             activated_at: Time.zone.now,
+             unique_name: "example_user" )
 
 
 99.times do |n|
-  name = Faker::Name.name 
+  name = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
   User.create!(name: name,
@@ -23,13 +24,17 @@ User.create!(name:  "Example User",
                password: password,
                password_confirmation: password,
                activated: true,
-               activated_at: Time.zone.now)
+               activated_at: Time.zone.now,
+               unique_name: "example_#{n+1}")
 end
 
 users = User.order(:created_at).take(6)
-50.times do
+10.times do
+  number = Random.rand(1..5)
   content = Faker::Lorem.sentence(word_count: 5)
-  users.each { |user| user.microposts.create!(content: content) }
+  picture = File.open("./public/images/image#{number}.jpg")
+  users.each { |user| user.microposts.create!(content: content,
+                                              picture: picture) }
 end
 
 # リレーションシップ

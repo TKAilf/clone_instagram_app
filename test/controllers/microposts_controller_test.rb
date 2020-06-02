@@ -27,4 +27,24 @@ class MicropostsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to static_pages_home_path
   end
+  
+  test "add reply_to colomn when reply to user" do
+    # michael(返信元ユーザ)でログイン
+    reply_from_user = users(:michael)
+    log_in_as(reply_from_user)
+  
+    # archer(返信先ユーザ)のunique_name取得
+    reply_to_user = users(:archer)
+    unique_name = reply_to_user.unique_name
+  
+    # 返信の内容
+    content = "@#{unique_name} 返信テスト"
+  
+    # 返信を投稿
+    post microposts_path, params: { micropost: { content: content,
+                                                 picture: File.open("./test/fixtures/instagram.jpg") } }
+  
+    # 最新の投稿のin_reply_toが返信相手のユーザIDになっている
+    # assert_equal reply_to_user.id, Micropost.first.in_reply_to
+  end
 end

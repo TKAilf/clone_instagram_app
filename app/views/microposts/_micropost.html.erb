@@ -4,14 +4,7 @@
   </div>
   <div class="col-md-10">
     <p><span class="user">ユーザー名:<%= link_to micropost.user.name, micropost.user %></span></p>
-    <% if micropost.picture? %>
-      <% if micropost.picture.file.content_type.include?('image/') %>
-        <%= image_tag micropost.picture.url(:thumb) %>
-      <% else %>
-        <%= video_tag micropost.picture.url, width: "30%", height: "30%", 
-                    controls: true, autobuffer: true %>
-      <% end %>
-    <% end %>
+    <%= image_tag micropost.picture.url(:thumb) %>
     <p><span class="content">投稿内容:<%= micropost.content %></span></p>
     <p><span class="timestamp">
       投稿時間は <%= time_ago_in_words(micropost.created_at) %> 前です。
