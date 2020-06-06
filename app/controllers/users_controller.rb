@@ -66,7 +66,7 @@ class UsersController < ApplicationController
     
     #ストロングパラメーター
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :unique_name)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :unique_name, :notification)
     end
     
     #beforeアクション

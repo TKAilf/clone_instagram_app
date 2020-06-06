@@ -5,10 +5,6 @@ class NotificationsController < ApplicationController
     @notifications = current_user.passive_relationships.paginate(page: params[:page])
   end
   
-  def update
-    
-  end
-  
   def destroy_all
     @notifications = current_user.passive_relationships.destroy_all
     redirect_to notifications_path

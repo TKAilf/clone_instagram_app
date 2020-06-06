@@ -14,13 +14,3 @@
 </ul>
 
 <%= will_paginate %>
-
-<%= form_with url: notifications_path, local: true do |f| %>
-  <div class="mb-4 form-group form-check">
-    <%= f.check_box :notification, class: "form-check-input", id: "exampleCheck1" %>
-    <%= f.label :notification, "通知設定を切り替える", class: "form-ckeck-label", for: "exampleCheck1"%>
-  </div>
-  <div class="mb-4 center">
-    <%= f.submit "変更", class: "mb-4 btn btn-primary" %>
-  </div>
-<% end %>

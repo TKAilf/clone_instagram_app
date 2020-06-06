@@ -22,6 +22,10 @@
     <%= f.text_field :unique_name, class: "form-control", id: "name", aria: { describedby: "emailHelp"}, placeholder: "返信用ユニークネーム" %>
   </div>
   <small id="emailHelp" class="mb-3 form-text text-muted">返信用の名前です。半角英数文字のみの入力になります。</small>
+  <div class="mb-4 form-group form-check">
+    <%= f.check_box :notification, class: "form-check-input", id: "exampleCheck1" %>
+    <%= f.label :notification, "通知設定を切り替える", class: "form-ckeck-label", for: "exampleCheck1"%>
+  </div>
   <div class="center">
     <%= f.submit yield(:button_text), class: "mb-3 btn btn-primary" %>
   </div>

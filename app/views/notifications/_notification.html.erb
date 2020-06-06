@@ -1,4 +1,4 @@
-<% if @notification %>
+<% if @notifications.any? %>
   <%= render '/notifications/follow' %>
   <%= render '/notifications/unfollow' %>
 <% else %>
