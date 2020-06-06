@@ -105,13 +105,16 @@ class User < ApplicationRecord
   # ユーザーをフォローする
   def follow(other_user)
     following << other_user
-    Relationship.send_follow_email(self, other_user)
+    if notification == true
+      Relationship.send_follow_email(other_user, self)
+      create_notification_follow(self)
+    end
   end
 
   # ユーザーをフォロー解除する
   def unfollow(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
-    Relationship.send_unfollow_email(self, other_user)
+    Relationship.send_unfollow_email(other_user, self)
   end
 
   # 現在のユーザーがフォローしてたらtrueを返す
@@ -149,5 +152,15 @@ class User < ApplicationRecord
   def downcase_unique_name
     self.unique_name.downcase!
   end
+  
+  private
+    # フォロー時の通知
+    def create_notification_follow(current_user)
+      temp = Relationship.where(["follower_id = ? and followed_id = ? ",current_user.id, id])
+      if temp.blank?
+        notification = current_user.active_relationships.new(followed_id: id)
+        notification.save if notification.valid?
+      end
+    end
 
 end

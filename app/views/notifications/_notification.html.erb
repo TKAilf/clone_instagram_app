@@ -1,0 +1,6 @@
+<% if @notification %>
+  <%= render '/notifications/follow' %>
+  <%= render '/notifications/unfollow' %>
+<% else %>
+  <p>通知はありません</p>
+<% end %>
