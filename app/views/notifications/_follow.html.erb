@@ -1,5 +1,8 @@
 <% @notifications.each do |notification| %>
   <li class="row border-bottom mb-2 ml-auto py-2">
+    <div class="col-md-2 align-self-center">
+      <%= link_to gravatar_for(notification, size: 50), notification %>
+    </div>
     <div class="col-md-10">
       <p><span class="user">ユーザー名:<%= link_to current_user.name, users_path(current_user) %></span></p>
       <p><span class="content"><%= notification.name %>からフォローされました！</span></p>

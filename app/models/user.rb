@@ -105,7 +105,7 @@ class User < ApplicationRecord
   # ユーザーをフォローする
   def follow(other_user)
     following << other_user
-    if notification == true
+    if self.notification == true
       Relationship.send_follow_email(other_user, self)
       create_notification_follow(self)
     end
