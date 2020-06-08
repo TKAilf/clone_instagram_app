@@ -1,4 +1,4 @@
-<% if @notifications.any? %>
+<% if @notifications.any? && (current_user.notification == true) %>
   <%= render '/notifications/follow' %>
 <% else %>
   <p>通知はありません</p>

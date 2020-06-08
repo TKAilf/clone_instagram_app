@@ -9,7 +9,6 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
   test "micropost interface" do
     log_in_as(@user)
     get static_pages_home_path
-    assert_select 'div.pagination'
     assert_select 'input[type=file]'
     # 無効な送信
     assert_no_difference 'Micropost.count' do

@@ -6,6 +6,7 @@ michael:
   activated: true
   activated_at: <%= Time.zone.now %>
   unique_name: michael_example
+  notification: true
 
 archer:
   name: Sterling Archer
@@ -14,6 +15,7 @@ archer:
   activated: true
   activated_at: <%= Time.zone.now %>
   unique_name: archer_example
+  notification: false
 
 lana:
   name: Lana Kane
@@ -22,6 +24,7 @@ lana:
   activated: true
   activated_at: <%= Time.zone.now %>
   unique_name: lana_example
+  notification: false
 
 malory:
   name: Malory Archer
@@ -30,6 +33,7 @@ malory:
   activated: true
   activated_at: <%= Time.zone.now %>
   unique_name: malory_example
+  notification: false
 
 <% 30.times do |n| %>
 user_<%= n %>:
@@ -39,4 +43,5 @@ user_<%= n %>:
   activated: true
   activated_at: <%= Time.zone.now %>
   unique_name: <%= "example_#{n}" %>
+  notification: false
 <% end %>

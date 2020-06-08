@@ -7,10 +7,10 @@
   <h5>全削除</h5>
 <% end %>
 
-<%= will_paginate %>
+<%= will_paginate(@notifications, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
 
 <ul class="notifications">
   <%= render '/notifications/notification' %>
 </ul>
 
-<%= will_paginate %>
+<%= will_paginate(@notifications, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
