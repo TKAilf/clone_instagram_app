@@ -6,7 +6,7 @@ class NotificationsController < ApplicationController
     @checked_followers = current_user.passive_relationships
     #@notificationの中でまだ確認していない通知のみ
     @checked_followers.where(checked: false).each do |checked_follower|
-      relationship.update_attributes(checked: true)
+      checked_follower.update_attributes(checked: true)
     end
   end
   

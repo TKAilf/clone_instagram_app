@@ -11,12 +11,14 @@ Rails.application.routes.draw do
     end
   end
   resources :account_activations, only: [:edit]
-  resources :password_resets, only:[:new,:create,:update,:edit]
+  resources :password_resets,     only: [:new,:create,:update,:edit]
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
   
   resources :notifications,       only: [:index]
   delete '/destroy_all', to: 'notifications#destroy_all'
+  
+  resources :likes,               only: [:create]
   
   get '/auth/facebook/callback', to: 'facebooks#create'
   
