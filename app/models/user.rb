@@ -107,7 +107,7 @@ class User < ApplicationRecord
     following << other_user
     if self.notification == true
       Relationship.send_follow_email(other_user, self)
-      create_notification_follow(self)
+      create_notification_follow!(self)
     end
   end
 
@@ -155,17 +155,16 @@ class User < ApplicationRecord
     self.unique_name.downcase!
   end
   
-  private
-    # フォロー時の通知
-    def create_notification_follow!(current_user)
-      temp = Relationship.where(["follower_id = ? and followed_id = ? and action = ? ",current_user.id, id, 'follow'])
-      if temp.blank?
-        notification = current_user.active_relationships.new(
-          followed_id: id,
-          action: 'follow'
-        )
-        notification.save if notification.valid?
-      end
+  # フォロー時の通知
+  def create_notification_follow!(current_user)
+    temp = current_user.active_relationships && (current_user.active_relationships.where(action: "follow"))
+    if temp.any?
+      notification = current_user.active_relationships.new(
+        followed_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
     end
+  end
 
 end

@@ -27,13 +27,13 @@ class FollowingTest < ActionDispatch::IntegrationTest
   end
   
   test "should follow a user the standard way" do
-    assert_difference '@user.following.count', 2 do
+    assert_difference '@user.following.count', 1 do
       post relationships_path, params: { followed_id: @other.id }
     end
   end
 
   test "should follow a user with Ajax" do
-    assert_difference '@user.following.count', 2 do
+    assert_difference '@user.following.count', 1 do
       post relationships_path, xhr: true, params: { followed_id: @other.id }
     end
   end
@@ -60,6 +60,7 @@ class FollowingTest < ActionDispatch::IntegrationTest
   end
 
   test "should not send follow notification email" do
+    logout_as
     log_in_as(@other)
     not_notify = users(:lana)
     post relationships_path, params: {followed_id: not_notify.id}

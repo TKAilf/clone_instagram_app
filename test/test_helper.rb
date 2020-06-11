@@ -20,6 +20,12 @@ class ActiveSupport::TestCase
     session[:user_id] = user.id
   end
   
+  #テストにおいてログアウトする。
+  def logout_as
+    session.delete(:user_id)
+    @current_user = nil
+  end
+  
 end
 
 class ActionDispatch::IntegrationTest
