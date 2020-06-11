@@ -1,0 +1,16 @@
+<% provide(:title, "通知") %>
+<%= render 'layouts/header' %>
+
+<h1>通知</h1>
+
+<%= link_to destroy_all_path, method: :delete do %>
+  <h5>全削除</h5>
+<% end %>
+
+<%= will_paginate(@followers, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
+
+<ul class="notifications">
+  <%= render '/notifications/notification' %>
+</ul>
+
+<%= will_paginate(@followers, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>

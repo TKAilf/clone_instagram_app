@@ -1,0 +1,4 @@
+<%= link_to gravatar_for(current_user, size: 50), current_user %>
+<h3><%= current_user.name %></h3>
+<span><%= link_to "マイプロフィールを見る", current_user %></span>
+<p class="mb-2"><span>現在の投稿数は<%= current_user.microposts.count %>個です</span></p>

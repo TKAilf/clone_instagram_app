@@ -1,0 +1,42 @@
+<nav class="pb-4 mb-4 navbar navbar-expand-lg navbar-light border-bottom border-dark">
+  <a class="navbar-brand" href="/static_pages/home">Clone_Instagram_App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <form class="form-inline mx-auto my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="検索" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+    </form>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/static_pages/home">ホーム<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/notifications">通知<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a><%= link_to "全ユーザー", users_path, class: "nav-link" %><span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a>
+          <%= link_to "設定", '#', class: "nav-link dropdown-toggle",id: "navbarDropdown", role: "button", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a><%= link_to "マイプロフィール編集", edit_user_path(current_user), class: "dropdown-item" %></a>
+          <a><%= link_to "パスワードの変更", new_password_reset_path, class: "dropdown-item" %></a>
+          <a><%= link_to "利用規約", "https://help.instagram.com/581066165581870", class: "dropdown-item" %></a>
+          <div class="dropdown-divider"></div>
+          <a><%= link_to "ログアウト", logout_path, class: "dropdown-item", method: :delete %></a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

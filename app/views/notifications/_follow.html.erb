@@ -1,0 +1,18 @@
+<% @followers.zip(@checked_followers).each do |follower, checked_follower| %>
+  <li class="row border-bottom mb-2 ml-auto py-2">
+    <div class="col-md-2 align-self-center">
+      <%= link_to gravatar_for(follower, size: 50), follower %>
+    </div>
+    <div class="col-md-10">
+      <p><span class="user">ユーザー名:<%= link_to current_user.name, users_path(current_user) %></span></p>
+      <% if checked_follower.action == 'follow'%>
+        <p><%= follower.name %>があなたをフォローしました。</p>
+      <% elsif checked_follower.action == 'like' %>
+        <p><%= follower.name %>があなたの投稿にいいねしました。</p>
+      <% end %>
+      <p><span class="timestamp">
+        フォローされたのは<%= time_ago_in_words(checked_follower.created_at) %>前です。
+      </span></p>
+    </div>
+  </li>
+<% end %>

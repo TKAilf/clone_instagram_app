@@ -1,0 +1,11 @@
+<% provide(:title, "新規登録") %>
+<% provide(:button_text, "新規登録")%>
+<h1>新規登録画面</h1>
+<div class="row justify-content-center">
+  <div class="p-5 col-md-5">
+    <%= render "form"%>
+    <div class="center">
+      <p>アカウントをお持ちですか？<%= link_to "ログインする", login_path, class: "m-1 btn btn-primary"%></p>
+    </div>
+  </div>
+</div>

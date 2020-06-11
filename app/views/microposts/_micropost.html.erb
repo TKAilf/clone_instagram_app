@@ -1,0 +1,20 @@
+<li class="row border-bottom mb-2 ml-auto py-2" id="micropost-<%= micropost.id %>">
+  <div class="col-md-2 align-self-center">
+    <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
+  </div>
+  <div class="col-md-10">
+    <p><span class="user">ユーザー名:<%= link_to micropost.user.name, micropost.user %></span></p>
+    <%= image_tag micropost.picture.url(:thumb) %>
+    <p><span class="content">投稿内容:<%= micropost.content %></span></p>
+    <p><span class="timestamp">
+      投稿時間は <%= time_ago_in_words(micropost.created_at) %> 前です。
+    </span></p>
+    <p><span>
+      <!--<%= link_to "いいね！", likes_path, method: :post%>-->
+      <% if current_user?(micropost.user) %>
+        <%= link_to "削除", micropost, method: :delete, class: "btn btn-warning",
+                                         data: { confirm: "本当によろしいですか?" } %>
+      <% end %>
+    </span></p>
+  </div>
+</li>

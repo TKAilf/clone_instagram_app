@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails',        '5.2.4.2'
+gem 'bootstrap', '~> 4.4.1'
 gem 'puma',         '3.9.1'
 gem 'sass-rails',   '5.0.6'
 gem 'uglifier',     '3.2.0'
@@ -8,6 +9,16 @@ gem 'coffee-rails', '4.2.2'
 gem 'jquery-rails', '4.3.1'
 gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.7.0'
+gem 'bcrypt',       '>= 3.1.13'
+gem 'faker'
+gem 'will_paginate', '~> 3.1.0'
+gem 'bootstrap-will_paginate', '1.0.0'
+gem 'carrierwave', '~> 2.0'
+gem 'mini_magick', '~> 4.10'
+gem 'streamio-ffmpeg'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13' , require: true
@@ -31,4 +42,5 @@ end
 
 group :production do
   gem 'pg', '0.20.0', require: false
+  gem 'fog', '~> 2.2'
 end

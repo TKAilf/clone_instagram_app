@@ -1,0 +1,13 @@
+<% provide(:title, "プロフィール設定") %>
+<% provide(:button_text, "変更を保存する") %>
+<%= render 'layouts/header' %>
+<h1>プロフィール設定</h1>
+<div class="row justify-content-center">
+  <div class="p-5 col-md-5">
+    <%= render "form"%>
+    <div class="gravatar_edit">
+      <%= gravatar_for @user %>
+      <a href="http://gravatar.com/emails" target="_blank" rel="noopener">変更</a>
+    </div>
+  </div>
+</div>
